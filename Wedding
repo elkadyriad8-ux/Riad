@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed & Esraa Wedding</title>
+<style>
+*{box-sizing:border-box}
+body{\
+margin:0;min-height:100vh;
+background:linear-gradient(135deg,#f8eee9,#fffaf5);
+font-family:Georgia,serif;color:#795b55;
+display:flex;justify-content:center;align-items:center;
+padding:25px;text-align:center;
+}
+.card{
+max-width:440px;width:100%;padding:35px 22px;
+background:#fffdf9;border:1px solid #e8d4c8;
+border-radius:18px;box-shadow:0 12px 40px #9c756522;
+}
+.flowers{font-size:32px;letter-spacing:8px}
+.small{letter-spacing:4px;font-size:12px;margin-top:20px}
+h1{font-size:38px;font-weight:normal;color:#a77b70;margin:15px 0}
+.amp{font-style:italic;color:#c5a18d}
+p{line-height:1.8}
+.envelope{
+margin:30px auto;width:220px;height:140px;
+background:#d9b8a8;position:relative;
+border-radius:5px;cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 8px 20px #8b665533;
+}
+.envelope:before{
+content:"";position:absolute;top:0;left:0;
+border-left:110px solid transparent;
+border-right:110px solid transparent;
+border-top:85px solid #edcfc0;
+transform-origin:top;transition:transform .5s;
+}
+.seal{
+z-index:2;background:#a8786b;color:white;
+width:42px;height:42px;border-radius:50%;
+display:grid;place-items:center;font-size:19px;
+}
+.open .envelope:before{transform:rotateX(180deg)}
+button{
+background:#a77b70;color:white;border:0;
+padding:13px 27px;border-radius:25px;
+font-size:15px;cursor:pointer;margin:12px;
+}
+#invitation{display:none}
+#invitation.show{display:block}
+.details{border-top:1px solid #eadbd2;margin-top:25px;padding-top:20px}
+.number{font-size:24px;color:#a77b70}
+.timer{display:flex;justify-content:center;gap:12px;margin:20px 0}
+.timer div{background:#f8eee9;padding:12px 9px;border-radius:10px;min-width:65px}
+.timer strong{display:block;font-size:22px}
+.timer span{font-size:10px}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="flowers">🌸 🌿 🌸</div>
+<div class="small">TOGETHER WITH THEIR FAMILIES</div>
+<h1>Ahmed <span class="amp">&</span> Esraa</h1>
+<p>Joyfully invite you to celebrate<br>the beginning of their forever.</p>
+
+<div id="cover">
+<div class="envelope" onclick="openInvite()">
+<div class="seal">♥️</div>
+</div>
+<p> A little envelope, a lifetime of love.</p>
+<button onclick="openInvite()">Open Your Invitation ♥️</button>
+</div>
+
+<div id="invitation">
+<div class="flowers">💐</div>
+<h2>You're Invited!</h2>
+<p>With love and happiness,<br>we would be honored by your presence<br>on our special day.</p>
+<div class="details">
+<div class="number">04 December 2026</div>
+<p>Friday · 4:00 PM</p>
+<p>Ahmed & Esraa<br>Forever Begins Here</p>
+</div>
+<h3>Countdown to Our Wedding</h3>
+<div class="timer">
+<div><strong id="days">00</strong><span>DAYS</span></div>
+<div><strong id="hours">00</strong><span>HOURS</span></div>
+<div><strong id="minutes">00</strong><span>MINUTES</span></div>
+<div><strong id="seconds">00</strong><span>SECONDS</span></div>
+</div>
+<p>We can't wait to celebrate with you!</p>
+<div class="flowers">🌷 🤍 🌷</div>
+</div>
+</div>
+<script>
+function openInvite(){
+document.getElementById('cover').style.display='none';
+document.getElementById('invitation').classList.add('show');
+}
+function countdown(){
+const target=new Date('2026-12-04T16:00:00+02:00').getTime();
+let diff=target-Date.now();
+if(diff<0)diff=0;
+document.getElementById('days').textContent=Math.floor(diff/86400000);
+document.getElementById('hours').textContent=Math.floor(diff%86400000/3600000);
+document.getElementById('minutes').textContent=Math.floor(diff%3600000/60000);
+document.getElementById('seconds').textContent=Math.floor(diff%60000/1000);
+}
+countdown();
+setInterval(countdown,1000);
+</script>
+</body>
+</html>
